@@ -4,7 +4,7 @@ Here are the steps to setup Jenkins, more info on: https://www.youtube.com/watch
 1. go to https://www.linode.com
 2. spin up two server from market place includ Jnekinse and docker to be able to use this later.
 3. Then go to the ip of you Jenkise server on port 8080
-4. Then ssh to your server and find the password and install git
+4. Then ssh to your server and find the password and install git, python and pip using apt-get install
 5. then click in Install suggested plugins
 6. go to manage Jenkins and then plugins and then install Blue ocean
 7. install Docker and Docker Compose build step
