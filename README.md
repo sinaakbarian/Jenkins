@@ -10,7 +10,4 @@ Here are the steps to setup Jenkins, more info on: https://www.youtube.com/watch
 7. install Docker and Docker Compose build step
 8. Then retrun to the dashboard and Klick on Open Blue Ocean to go to the new interface and spin up the Jenkins
 9. creat a pip line and then linkit to your github
-10. you should select a repo contain the Jenkins file 
-
-
-13. 
+10. you should select a repo you want to add Jenkise, first you need to add git here to create jenkise and then you can add tasks in paralel for example you can get the file list in parallel e.g. ls -la from shell script or in paralled you can add
