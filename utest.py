@@ -4,7 +4,7 @@ import unittest
 import numpy as np
 from main import SimpleLinearModel
 
-def test_model_prediction(self):
+def test_model_prediction():
       # Create a simple dataset
       X_train = np.array([[1], [2], [3]])
       y_train = np.array([2, 4, 6])
