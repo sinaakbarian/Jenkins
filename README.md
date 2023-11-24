@@ -12,5 +12,5 @@ Here are the steps to setup Jenkins, more info on: https://www.youtube.com/watch
 9. creat a pip line and then linkit to your github
 10. you should select a repo contain the Jenkins file 
 
-11. kujgoh-jyWna7-zembez
-12. http://172.105.18.65:8080/
+
+13. 
