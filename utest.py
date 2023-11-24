@@ -23,4 +23,4 @@ def test_model_prediction(self):
       self.assertAlmostEqual(prediction[0], 8, places=2, msg="Model prediction failed for X_test=[4]")
 
 if __name__ == '__main__':
-    TestMLModel()
+    test_model_prediction()
