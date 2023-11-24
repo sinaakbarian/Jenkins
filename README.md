@@ -1,4 +1,5 @@
 # Jenkins Setup Guide
+![Jenkins](path/to/your/1.png)
 
 This guide provides step-by-step instructions for setting up Jenkins on a Linode server. For a visual walkthrough, refer to the accompanying [video tutorial](https://www.youtube.com/watch?v=f4idgaq2VqA).
 
