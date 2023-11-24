@@ -19,8 +19,8 @@ pipeline {
           steps {
             sh '''python3 -m venv test
 . test/bin/activate
-pip install -r requirements.txt
-python unittest.py
+pip3 install -r requirements.txt
+python3 unittest.py
 '''
           }
         }
