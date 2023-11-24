@@ -17,7 +17,11 @@ pipeline {
 
         stage('Install requirement and run unittest') {
           steps {
-            sh '''python3 -m venv test && source test/bin/activate && pip install -r requirements.txt && python3 unittest.py
+            sh '''python3 -m venv test && \\
+    source test/bin/activate || \\
+    test\\Scripts\\activate && \\
+    pip3 install -r requirements.txt && \\
+    python3 unittest.py
 '''
           }
         }
