@@ -8,8 +8,26 @@ pipeline {
     }
 
     stage('ls') {
+      parallel {
+        stage('ls') {
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('Install requirement and run unittest') {
+          steps {
+            sh '''pip install -r requirements.txt && python unittest.py
+'''
+          }
+        }
+
+      }
+    }
+
+    stage('print') {
       steps {
-        sh 'ls -la'
+        echo 'The test pass successfully'
       }
     }
 
