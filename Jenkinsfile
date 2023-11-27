@@ -42,7 +42,8 @@ python3 utest.py
 
     stage('docker login') {
       steps {
-        sh 'docker login -u $username -p $password ghcr.io'
+        sh '''echo $password | docker login -u $username --password-stdin ghcr.io
+'''
       }
     }
 
