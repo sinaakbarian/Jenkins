@@ -46,6 +46,29 @@ python3 utest.py
       }
     }
 
+    stage('get docker images') {
+      parallel {
+        stage('get docker images') {
+          steps {
+            sh 'docker ps'
+          }
+        }
+
+        stage('tag docker') {
+          steps {
+            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0 '
+          }
+        }
+
+      }
+    }
+
+    stage('') {
+      steps {
+        echo 'Done'
+      }
+    }
+
   }
   environment {
     password = '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'
