@@ -36,7 +36,7 @@ python3 utest.py
 
     stage('build docker') {
       steps {
-        sh 'docker build -f Dockerfile -t Jenkins:1.0 .'
+        sh 'docker build -f Dockerfile -t jenkins:1.0 .'
       }
     }
 
