@@ -42,7 +42,7 @@ python3 utest.py
 
     stage('docker login') {
       steps {
-        sh 'docker login -u $username -p $password ghcr.io'
+        sh 'docker login -u $username --password-stdin $password ghcr.io'
       }
     }
 
@@ -56,14 +56,14 @@ python3 utest.py
 
         stage('tag docker') {
           steps {
-            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0 '
+            sh 'docker tag jenkins:1.0Â ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0Â '
           }
         }
 
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         echo 'Done'
       }
