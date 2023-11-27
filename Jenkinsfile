@@ -40,5 +40,15 @@ python3 utest.py
       }
     }
 
+    stage('docker login') {
+      steps {
+        sh 'docker login -u $username -p $password ghcr.io'
+      }
+    }
+
+  }
+  environment {
+    password = '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'
+    username = 'sinaakbarian'
   }
 }
