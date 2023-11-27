@@ -36,7 +36,7 @@ python3 utest.py
 
     stage('build docker') {
       steps {
-        sh 'sudo systemctl start docker && docker build -t Jenkins:1.0 . '
+        sh 'systemctl start docker && docker build -t Jenkins:1.0 .'
       }
     }
 
