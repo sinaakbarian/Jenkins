@@ -72,7 +72,7 @@ python3 utest.py
 
   }
   environment {
-    password = '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'
+    password = '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'
     username = 'sinaakbarian'
   }
 }
