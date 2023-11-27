@@ -71,7 +71,7 @@ python3 utest.py
 
   }
   environment {
-    password = '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'
+    password = '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'
     username = 'sinaakbarian'
   }
 }
