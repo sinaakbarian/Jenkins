@@ -60,3 +60,76 @@ This guide provides step-by-step instructions for setting up Jenkins on a Linode
 
 
 By following these steps, you will have a fully configured Jenkins server with integrated plugins, Docker support, and a pipeline linked to your GitHub repository.
+
+#### 10. Deploy Jenkins on Docker
+
+Before starting, ensure Docker is installed on your machine.
+
+```bash
+docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+```
+
+Access Jenkins at [http://localhost:8080](http://localhost:8080) and follow the setup instructions.
+
+#### 11. Add Docker Build to Jenkins Pipeline
+
+Edit your Jenkins pipeline to include a Docker build step:
+
+```groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    // Add your build steps here
+                    sh 'docker build -f Dockerfile <path_to_directory>'
+                }
+            }
+        }
+
+        stage('Login to Docker Registry') {
+            steps {
+                script {
+                    sh 'docker login -u <username> -p <password> ghcr.io'
+                }
+            }
+        }
+
+        stage('Push Docker Image to Registry') {
+            steps {
+                script {
+                    sh 'docker push ghcr.io/<username>/<projectname:tag>'
+                }
+            }
+        }
+    }
+}
+```
+
+#### 12. Automate Jenkins Pipeline on GitHub Changes
+
+For automated builds, configure Jenkins to trigger on GitHub commits. Two methods are available:
+
+##### a. Push Notification:
+
+- Install GitHub Pull Request Builder in Jenkins.
+- Configure GitHub credentials in Jenkins.
+- Configure GitHub Webhooks to point to your Jenkins instance.
+- In Jenkins, navigate to the GitHub Pull Request Builder section and provide the necessary GitHub credentials.
+
+##### b. Jenkins Checks:
+
+- Ensure Jenkins is configured to check for changes periodically.
+- Configure GitHub Webhooks to point to your Jenkins instance.
+- Use GitHub Webhooks to trigger Jenkins builds on push events.
+
+Note: The push notification method is recommended for efficiency.
+
+#### Additional Notes:
+
+- Make sure to replace `<username>`, `<password>`, `<projectname>`, and `<tag>` with your actual Docker registry and project details.
+- Adjust the Dockerfile path and build steps as needed for your project.
+
+Now, your Jenkins pipeline is set up to build and deploy Docker images automatically when changes occur in your GitHub repository.
