@@ -39,7 +39,9 @@ python3 utest.py
         stage('Sina') {
           steps {
             script {
-              withCredentials([string(credentialsId: 'passG', variable: 'Pass')]) {sh "docker login -u sinaakbarian -p $Pass ghcr.io"}
+              withCredentials([string(credentialsId: 'passG', variable: 'Pass')]) {
+                sh "docker login -u sinaakbarian -p $Pass ghcr.io"
+              }
             }
 
           }
@@ -75,10 +77,8 @@ python3 utest.py
       steps {
         echo 'Done'
         sh '''withCredentials([string(credentialsId: \'passG\', variable: \'Pass\')]) {
-    sh """
-        docker login -u sinaakbarian -p \\$Pass ghcr.io &&
-        docker push ghcr.io/sinaakbarian/jenkins:1.0
-    """
+sh "docker login -u sinaakbarian -p $Pass ghcr.io"
+sh "docker push ghcr.io/sinaakbarian/jenkins:1.0"
 }
 '''
         }
