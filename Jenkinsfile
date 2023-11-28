@@ -77,8 +77,8 @@ python3 utest.py
       steps {
         echo 'Done'
         sh '''withCredentials([string(credentialsId: \'passG\', variable: \'Pass\')]) {
-sh "docker login -u sinaakbarian -p $Pass ghcr.io"
-sh "docker push ghcr.io/sinaakbarian/jenkins:1.0"
+    sh "docker login -u sinaakbarian -p $Pass ghcr.io"
+    sh "docker push ghcr.io/sinaakbarian/jenkins:1.0"
 }
 '''
         }
