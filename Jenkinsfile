@@ -45,15 +45,9 @@ python3 utest.py
           }
         }
 
-        stage('echo') {
-          steps {
-            sh 'echo $pass'
-          }
-        }
-
         stage('Sina') {
           steps {
-            sh 'cd ~/ && pwd && ls && nano /var/lib/jenkins/.bashrc && . /var/lib/jenkins/.bashrc'
+            sh 'MY_PASSWORD=$(echo ${passG} | tr -d \'\\n\') && echo "Password: ${MY_PASSWORD}"'
           }
         }
 
