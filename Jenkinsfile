@@ -9,7 +9,7 @@ pipeline {
 
     stage('ls') {
       parallel {
-        stage('ls') {
+        stage('get directory') {
           steps {
             sh 'ls -la'
           }
@@ -22,28 +22,6 @@ pipeline {
 pip3 install -r requirements.txt
 python3 utest.py
 '''
-          }
-        }
-
-      }
-    }
-
-    stage('print') {
-      parallel {
-        stage('print') {
-          steps {
-            echo 'The test pass successfully'
-          }
-        }
-
-        stage('Sina') {
-          steps {
-            script {
-              withCredentials([string(credentialsId: 'passG', variable: 'Pass')]) {
-                sh "docker login -u sinaakbarian -p $Pass ghcr.io"
-              }
-            }
-
           }
         }
 
@@ -73,7 +51,7 @@ python3 utest.py
       }
     }
 
-    stage('done') {
+    stage('Push docker') {
       steps {
         echo 'Done'
         script {
