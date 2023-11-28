@@ -45,9 +45,9 @@ python3 utest.py
           }
         }
 
-        stage('') {
+        stage('test') {
           steps {
-            sh '$sina'
+            sh 'echo $sina'
           }
         }
 
