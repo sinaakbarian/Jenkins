@@ -38,7 +38,7 @@ python3 utest.py
       parallel {
         stage('build docker') {
           steps {
-            sh 'docker build -f Dockerfile -t jenkins:1.0 .'
+            sh '#docker build -f Dockerfile -t jenkins:1.0 .'
           }
         }
 
