@@ -47,7 +47,7 @@ python3 utest.py
 
         stage('test') {
           steps {
-            sh 'echo $pass'
+            sh 'source ~/.bashrc && echo $pass'
           }
         }
 
