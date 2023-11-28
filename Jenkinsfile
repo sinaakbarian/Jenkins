@@ -29,23 +29,17 @@ python3 utest.py
     }
 
     stage('print') {
-      steps {
-        echo 'The test pass successfully'
-      }
-    }
-
-    stage('build docker') {
       parallel {
-        stage('build docker') {
+        stage('print') {
           steps {
-            sh '#docker build -f Dockerfile -t jenkins:1.0 .'
+            echo 'The test pass successfully'
           }
         }
 
-        stage('sina') {
+        stage('Sina') {
           steps {
             script {
-              script{([string(credentialsId: 'passG', variable: 'Pass')])}
+              withCredentials([string(credentialsId: 'passG', variable: 'Pass')]) {sh "docker login -u sinaakbarian -p $Pass ghcr.io"}
             }
 
           }
@@ -54,9 +48,15 @@ python3 utest.py
       }
     }
 
+    stage('build docker') {
+      steps {
+        sh '#docker build -f Dockerfile -t jenkins:1.0 .'
+      }
+    }
+
     stage('docker login') {
       steps {
-        sh 'docker login -u sinaakbarian -p $Pass ghcr.io'
+        sh '#docker login -u sinaakbarian -p $Pass ghcr.io'
       }
     }
 
