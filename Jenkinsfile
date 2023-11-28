@@ -35,8 +35,22 @@ python3 utest.py
     }
 
     stage('build docker') {
-      steps {
-        sh 'docker build -f Dockerfile -t jenkins:1.0 .'
+      parallel {
+        stage('build docker') {
+          environment {
+            sina = 'credentials(\'3477edf3-4b7b-45b6-8ef1-645f5310816f"\')'
+          }
+          steps {
+            sh 'docker build -f Dockerfile -t jenkins:1.0 .'
+          }
+        }
+
+        stage('') {
+          steps {
+            sh '$sina'
+          }
+        }
+
       }
     }
 
