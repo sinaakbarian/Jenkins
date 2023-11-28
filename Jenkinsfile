@@ -38,7 +38,7 @@ python3 utest.py
 
         stage('set var') {
           steps {
-            sh '.�~/.bashrc'
+            sh '. ~/.bashrc'
           }
         }
 
@@ -71,7 +71,7 @@ python3 utest.py
 
         stage('tag docker') {
           steps {
-            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0Ã‚Â '
+            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0Ãƒâ€šÃ‚Â '
           }
         }
 
