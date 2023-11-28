@@ -44,10 +44,9 @@ python3 utest.py
 
         stage('Sina') {
           steps {
-            sh '''withCredentials([string(credentialsId: \'passG\', variable: \'MY_SECRET\')]) {
-echo "Secret Value: ${MY_SECRET}"
-}
-'''
+            sh '''withCredentials([string(credentialsId: \'passG\', variable: \'Pass\')]) {
+    echo $Pass
+}'''
             }
           }
 
