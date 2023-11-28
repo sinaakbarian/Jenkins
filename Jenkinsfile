@@ -47,7 +47,7 @@ python3 utest.py
 
         stage('test') {
           steps {
-            sh 'echo $sina'
+            sh 'echo $pass'
           }
         }
 
@@ -60,8 +60,7 @@ python3 utest.py
         password = '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'
       }
       steps {
-        sh '''"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" | docker login --username "sinaakbarian" --password-stdin
-login ghcr.io
+        sh '''echo "$pass" | docker login --username "sinaakbarian" --password-stdin ghcr.io
 '''
       }
     }
