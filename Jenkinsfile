@@ -47,7 +47,10 @@ python3 utest.py
 
         stage('Sina') {
           steps {
-            sh 'MY_PASSWORD=$(echo ${passG} | tr -d \'\\n\') && echo "Password: ${MY_PASSWORD}"'
+            sh '''# Use Jenkins credential in a shell script
+MY_PASSWORD=$(echo ${SECRETS_CREDENTIAL_ID} | tr -d \'\\n\')
+echo "Password: ${MY_PASSWORD}"
+'''
           }
         }
 
