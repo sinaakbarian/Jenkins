@@ -54,12 +54,6 @@ python3 utest.py
       }
     }
 
-    stage('docker login') {
-      steps {
-        sh '#docker login -u sinaakbarian -p $Pass ghcr.io'
-      }
-    }
-
     stage('get docker images') {
       parallel {
         stage('get docker images') {
