@@ -44,16 +44,10 @@ python3 utest.py
 
         stage('Sina') {
           steps {
-            sh ''' withCredentials([string(credentialsId: \'passG\', variable: \'MY_SECRET\')]) {
-                        // Inside this block, MY_SECRET variable is available
-                        echo "Secret Value: ${MY_SECRET}"
-
-
-
-
-                        // You can use the secret in other steps or commands
-                        sh \'echo "Using secret for something"\'
-                    }'''
+            sh '''withCredentials([string(credentialsId: \'passG\', variable: \'MY_SECRET\')]) {
+    echo "Secret Value: ${MY_SECRET}"
+}
+'''
             }
           }
 
@@ -76,7 +70,7 @@ python3 utest.py
 
           stage('tag docker') {
             steps {
-              sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â '
+              sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â '
             }
           }
 
