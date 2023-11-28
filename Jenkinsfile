@@ -2,31 +2,8 @@ pipeline {
   agent any
   stages {
     stage('Check Out Code') {
-      parallel {
-        stage('Check Out Code') {
-          steps {
-            git(url: 'https://github.com/sinaakbarian/Jenkins', branch: 'main')
-          }
-        }
-
-        stage('ls') {
-          steps {
-            sh 'ls '
-          }
-        }
-
-        stage('ll') {
-          steps {
-            sh 'nano .bashrc '
-          }
-        }
-
-        stage('dd') {
-          steps {
-            sh 'pwd'
-          }
-        }
-
+      steps {
+        git(url: 'https://github.com/sinaakbarian/Jenkins', branch: 'main')
       }
     }
 
@@ -52,8 +29,19 @@ python3 utest.py
     }
 
     stage('print') {
-      steps {
-        echo 'The test pass successfully'
+      parallel {
+        stage('print') {
+          steps {
+            echo 'The test pass successfully'
+          }
+        }
+
+        stage('check directory') {
+          steps {
+            sh 'pwd'
+          }
+        }
+
       }
     }
 
@@ -86,7 +74,7 @@ python3 utest.py
 
         stage('tag docker') {
           steps {
-            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0Â '
+            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0Ã‚Â '
           }
         }
 
