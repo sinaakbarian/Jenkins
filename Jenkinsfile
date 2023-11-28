@@ -46,7 +46,7 @@ python3 utest.py
         password = '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'
       }
       steps {
-        sh '''echo $password | docker login -u $username --password-stdin ghcr.io
+        sh '''docker login ghcr.io
 '''
       }
     }
