@@ -44,42 +44,50 @@ python3 utest.py
 
         stage('Sina') {
           steps {
-            sh '''echo -n $passG | base64 > tmpp
-nano tmpp'''
+            sh ''' withCredentials([string(credentialsId: \'passG\', variable: \'MY_SECRET\')]) {
+                        // Inside this block, MY_SECRET variable is available
+                        echo "Secret Value: ${MY_SECRET}"
+
+
+
+
+                        // You can use the secret in other steps or commands
+                        sh \'echo "Using secret for something"\'
+                    }'''
+            }
           }
+
         }
-
       }
-    }
 
-    stage('docker login') {
-      steps {
-        sh 'echo ${passG} | docker login -u sinaakbarian --password-stdin ghcr.io'
+      stage('docker login') {
+        steps {
+          sh 'echo ${passG} | docker login -u sinaakbarian --password-stdin ghcr.io'
+        }
       }
-    }
 
-    stage('get docker images') {
-      parallel {
-        stage('get docker images') {
-          steps {
-            sh 'docker ps'
+      stage('get docker images') {
+        parallel {
+          stage('get docker images') {
+            steps {
+              sh 'docker ps'
+            }
           }
-        }
 
-        stage('tag docker') {
-          steps {
-            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â '
+          stage('tag docker') {
+            steps {
+              sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â '
+            }
           }
+
         }
-
       }
-    }
 
-    stage('done') {
-      steps {
-        echo 'Done'
+      stage('done') {
+        steps {
+          echo 'Done'
+        }
       }
-    }
 
+    }
   }
-}
