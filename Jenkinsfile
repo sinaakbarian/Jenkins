@@ -36,9 +36,9 @@ python3 utest.py
           }
         }
 
-        stage('test') {
+        stage('set var') {
           steps {
-            sh 'ls && . ~/.bashrc && echo $pass && pwd && nano�~/.bashrc'
+            sh '.�~/.bashrc'
           }
         }
 
@@ -55,11 +55,8 @@ python3 utest.py
     }
 
     stage('docker login') {
-      environment {
-        pass = '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'
-      }
       steps {
-        sh '''echo "$pass" | docker login --username "sinaakbarian" --password-stdin ghcr.io
+        sh '''docker login --username "sinaakbarian" --password "$pass" ghcr.io
 '''
       }
     }
@@ -74,7 +71,7 @@ python3 utest.py
 
         stage('tag docker') {
           steps {
-            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0Â '
+            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0Ã‚Â '
           }
         }
 
