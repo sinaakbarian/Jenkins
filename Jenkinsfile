@@ -42,13 +42,7 @@ python3 utest.py
           }
         }
 
-        stage('Sina') {
-          steps {
-            sh 'withCredentials([string(credentialsId: \'passG\', variable: \'Pass\')]) {}'
-          }
-        }
-
-        stage('') {
+        stage('sina') {
           steps {
             script {
               withCredentials([string(credentialsId: 'passG', variable: 'Pass')]) {}
