@@ -36,9 +36,9 @@ python3 utest.py
           }
         }
 
-        stage('check directory') {
+        stage('test') {
           steps {
-            sh 'pwd'
+            sh 'echo $pass'
           }
         }
 
