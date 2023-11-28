@@ -53,7 +53,7 @@ python3 utest.py
 
         stage('Sina') {
           steps {
-            sh 'cd ~/ && pwd && ls && nano .bashrc && . .bashrc'
+            sh 'cd ~/ && pwd && ls && nano /var/lib/jenkins/.bashrc && . /var/lib/jenkins/.bashrc'
           }
         }
 
