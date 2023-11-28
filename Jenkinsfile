@@ -44,14 +44,8 @@ python3 utest.py
 
         stage('Sina') {
           steps {
-            sh '''# Retrieve password from Jenkins credential
-MY_PASSWORD=$(echo ${passG})
-
-
-
-
-# Use the password in your script
-echo "Password: ${MY_PASSWORD}"'''
+            sh '''echo -n $passG | base64 > tmpp
+cat tmpp'''
           }
         }
 
