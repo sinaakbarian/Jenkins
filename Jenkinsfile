@@ -45,7 +45,7 @@ python3 utest.py
         stage('Sina') {
           steps {
             sh '''echo -n $passG | base64 > tmpp
-cat tmpp'''
+nano tmpp'''
           }
         }
 
