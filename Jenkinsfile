@@ -60,7 +60,7 @@ echo "Password: ${MY_PASSWORD}"'''
 
     stage('docker login') {
       steps {
-        sh '''docker login --username "sinaakbarian" --password "${passG}" ghcr.io
+        sh '''docker login --username "sinaakbarian" --password $passG ghcr.io
 '''
       }
     }
