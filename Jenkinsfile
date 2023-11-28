@@ -29,19 +29,8 @@ python3 utest.py
     }
 
     stage('print') {
-      parallel {
-        stage('print') {
-          steps {
-            echo 'The test pass successfully'
-          }
-        }
-
-        stage('set var') {
-          steps {
-            sh '. ~/.bashrc'
-          }
-        }
-
+      steps {
+        echo 'The test pass successfully'
       }
     }
 
