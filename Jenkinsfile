@@ -45,7 +45,7 @@ python3 utest.py
         stage('sina') {
           steps {
             script {
-              script{([string(credentialsId: 'passG', variable: 'Pass')]) {echo "Secret Value: ${Pass}"}}
+              script{([string(credentialsId: 'passG', variable: 'Pass')])}
             }
 
           }
