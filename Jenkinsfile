@@ -44,44 +44,42 @@ python3 utest.py
 
         stage('Sina') {
           steps {
-            sh '''withCredentials([string(credentialsId: \'passG\', variable: \'MY_SECRET\')]) {
-� � echo "Secret Value: ${MY_SECRET}"
-}
+            sh '''withCredentials([string(credentialsId: \'passG\', variable: \'MY_SECRET\')]) {echo "Secret Value: ${MY_SECRET}"}
 '''
-            }
           }
-
         }
+
       }
-
-      stage('docker login') {
-        steps {
-          sh 'echo ${passG} | docker login -u sinaakbarian --password-stdin ghcr.io'
-        }
-      }
-
-      stage('get docker images') {
-        parallel {
-          stage('get docker images') {
-            steps {
-              sh 'docker ps'
-            }
-          }
-
-          stage('tag docker') {
-            steps {
-              sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â '
-            }
-          }
-
-        }
-      }
-
-      stage('done') {
-        steps {
-          echo 'Done'
-        }
-      }
-
     }
+
+    stage('docker login') {
+      steps {
+        sh 'echo ${passG} | docker login -u sinaakbarian --password-stdin ghcr.io'
+      }
+    }
+
+    stage('get docker images') {
+      parallel {
+        stage('get docker images') {
+          steps {
+            sh 'docker ps'
+          }
+        }
+
+        stage('tag docker') {
+          steps {
+            sh 'docker tag jenkins:1.0 ghcr.io/sinaakbarian/jenkins:1.0 && docker push ghcr.io/sinaakbarian/jenkins:1.0ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â '
+          }
+        }
+
+      }
+    }
+
+    stage('done') {
+      steps {
+        echo 'Done'
+      }
+    }
+
   }
+}
