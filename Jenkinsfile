@@ -2,8 +2,31 @@ pipeline {
   agent any
   stages {
     stage('Check Out Code') {
-      steps {
-        git(url: 'https://github.com/sinaakbarian/Jenkins', branch: 'main')
+      parallel {
+        stage('Check Out Code') {
+          steps {
+            git(url: 'https://github.com/sinaakbarian/Jenkins', branch: 'main')
+          }
+        }
+
+        stage('ls') {
+          steps {
+            sh 'ls '
+          }
+        }
+
+        stage('ll') {
+          steps {
+            sh 'nano .bashrc '
+          }
+        }
+
+        stage('dd') {
+          steps {
+            sh 'pwd'
+          }
+        }
+
       }
     }
 
@@ -35,29 +58,17 @@ python3 utest.py
     }
 
     stage('build docker') {
-      parallel {
-        stage('build docker') {
-          environment {
-            sina = 'credentials(\'3477edf3-4b7b-45b6-8ef1-645f5310816f"\')'
-          }
-          steps {
-            sh 'docker build -f Dockerfile -t jenkins:1.0 .'
-          }
-        }
-
-        stage('test') {
-          steps {
-            sh '. ~/.bashrc && echo $pass'
-          }
-        }
-
+      environment {
+        sina = 'credentials(\'3477edf3-4b7b-45b6-8ef1-645f5310816f"\')'
+      }
+      steps {
+        sh 'docker build -f Dockerfile -t jenkins:1.0 .'
       }
     }
 
     stage('docker login') {
       environment {
-        username = 'sinaakbarian'
-        password = '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'
+        pass = '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'
       }
       steps {
         sh '''echo "$pass" | docker login --username "sinaakbarian" --password-stdin ghcr.io
