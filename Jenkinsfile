@@ -37,9 +37,6 @@ python3 utest.py
     stage('build docker') {
       parallel {
         stage('build docker') {
-          environment {
-            sina = 'credentials(\'3477edf3-4b7b-45b6-8ef1-645f5310816f"\')'
-          }
           steps {
             sh 'docker build -f Dockerfile -t jenkins:1.0 .'
           }
@@ -48,7 +45,7 @@ python3 utest.py
         stage('Sina') {
           steps {
             sh '''# Retrieve password from Jenkins credential
-MY_PASSWORD=$(echo ${SECRETS_CREDENTIAL_ID})
+MY_PASSWORD=$(echo ${passG})
 
 
 
@@ -63,7 +60,7 @@ echo "Password: ${MY_PASSWORD}"'''
 
     stage('docker login') {
       steps {
-        sh '''docker login --username "sinaakbarian" --password "$pass" ghcr.io
+        sh '''docker login --username "sinaakbarian" --password "${passG}" ghcr.io
 '''
       }
     }
