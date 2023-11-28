@@ -38,7 +38,7 @@ python3 utest.py
 
         stage('set var') {
           steps {
-            sh '. ~/.bashrc'
+            sh '. ~/.bashrc'
           }
         }
 
