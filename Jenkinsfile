@@ -53,7 +53,7 @@ python3 utest.py
 
         stage('Sina') {
           steps {
-            sh 'cd ~/ && pwd && . .bashrc'
+            sh 'cd ~/ && pwd && ls && . .bashrc'
           }
         }
 
